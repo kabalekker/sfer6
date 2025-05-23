@@ -1,0 +1,208 @@
+/**
+ * Стили для формы обратной связи сайта Fin-Sfera
+ * Версия: 1.0.0
+ */
+
+/* Стили для модальных окон */
+.custom-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.custom-modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.3s ease-out;
+}
+
+.custom-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #999;
+  transition: color 0.3s;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  padding: 0;
+}
+
+.custom-modal-close:hover {
+  color: #333;
+}
+
+.custom-modal-title {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 600;
+  font-family: 'TildaSans', Arial, sans-serif;
+}
+
+.custom-modal-title.success {
+  color: #4192ca;
+}
+
+.custom-modal-title.error {
+  color: #f44336;
+}
+
+.custom-modal-text {
+  margin-bottom: 20px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  font-family: 'TildaSans', Arial, sans-serif;
+}
+
+.custom-modal-button {
+  margin-top: 20px;
+  padding: 12px 30px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.3s;
+  font-family: 'TildaSans', Arial, sans-serif;
+}
+
+.custom-modal-button.success {
+  background: #4192ca;
+}
+
+.custom-modal-button.success:hover {
+  background: #145ba2;
+}
+
+.custom-modal-button.error {
+  background: #f44336;
+}
+
+.custom-modal-button.error:hover {
+  background: #d32f2f;
+}
+
+/* Стили для индикатора загрузки */
+.custom-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.custom-loader-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #4192ca;
+  border-radius: 50%;
+  animation: spin 2s linear infinite;
+}
+
+/* Анимации */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Адаптивность для мобильных устройств */
+@media screen and (max-width: 480px) {
+  .custom-modal-content {
+    padding: 20px;
+    width: 85%;
+  }
+
+  .custom-modal-title {
+    font-size: 20px;
+  }
+
+  .custom-modal-text {
+    font-size: 14px;
+  }
+
+  .custom-modal-button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
+
+/* Улучшения для полей формы */
+input[name='name'],
+input[name='email'],
+input[name='phone'],
+textarea[name='Text'] {
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[name='name']:focus,
+input[name='email']:focus,
+input[name='phone']:focus,
+textarea[name='Text']:focus {
+  border-color: #4192ca !important;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+  outline: none;
+}
+
+/* Стили для кнопки отправки */
+a[href='#sendform'] {
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+a[href='#sendform']:hover {
+  transform: translateY(-2px);
+}
+
+a[href='#sendform']:active {
+  transform: translateY(1px);
+}

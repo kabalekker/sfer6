@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /direct-mail.php
+Disallow: /form_log.txt
+Disallow: /js/custom-form-handler.js
+Disallow: /js/fix-script.js
+Disallow: /css/form-styles.css
+Disallow: /.htaccess
+Disallow: /backup.sh
+
+Sitemap: https://fin-sfera.ru/sitemap.xml

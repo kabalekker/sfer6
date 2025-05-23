@@ -1,0 +1,44 @@
+ErrorDocument 403 /404.html
+ErrorDocument 404 /404.html
+
+DirectoryIndex index.html
+
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} /robots.txt
+RewriteCond "%{DOCUMENT_ROOT}/robots_%{HTTP_HOST}.txt" -f
+RewriteRule ^(.*)$ robots_%{HTTP_HOST}.txt [NC,L]
+# Защита файла с логами
+<Files "form_log.txt">
+  Order Allow,Deny
+  Deny from all
+</Files>
+
+# Защита от прямого доступа к PHP файлам из определенных директорий
+<FilesMatch "\.php$">
+  # Разрешаем доступ только к необходимым PHP файлам
+  <Files "direct-mail.php">
+    Order Allow,Deny
+    Allow from all
+  </Files>
+  
+  # Запрещаем прямой доступ к остальным PHP файлам
+  Order Allow,Deny
+  Deny from all
+</FilesMatch>
+
+# Включаем перенаправление с HTTP на HTTPS
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# Защита от XSS атак
+<IfModule mod_headers.c>
+  Header set X-XSS-Protection "1; mode=block"
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
